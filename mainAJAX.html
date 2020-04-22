@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Requisição Ajax</title>
+</head>
+
+<body>
+
+
+<script>
+    //Trabalhando com Promisse 
+var minhaPrommise = function(){
+    return new Promise(function(resolve, reject){
+var xhr = new XMLHttpRequest();
+xhr.open('GET','https://api.github.com/users/HMontarroyos');
+xhr.send(null);
+//Requisção AJAX
+xhr.onreadystatechange = function(){
+    if(xhr.readyState === 4){
+    if(xhr.status === 200){
+        resolve(JSON.parse(xhr.responseText));
+    }else{
+        reject('Erro na requisição');
+    }
+        //console.log(JSON.parse(xhr.responseText));
+        }
+}
+    });
+}
+
+// Toda promisse tem o medo resolve e reject 
+//.then sempre e uma reposta caso seja 200 para response = resolve 
+//.catch sempre e erro error = reject 
+
+
+//sempre que invocar a função  da promisse tem que usar os metodos .then e .cath
+// para tratar erros e ok da requisição 
+
+minhaPrommise()
+    .then(function(response){
+        console.log(response);
+})
+    .catch(function(error){
+        console.warn(error);
+});
+
+</script>
+</body>
+
+</html>
+

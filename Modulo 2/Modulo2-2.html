@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Exercício 02</title>
+</head>
+
+<body>
+  <button id="new">Novo quadrado</button>
+
+  <div id="squares"></div>
+
+  <script>
+      /*
+Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+aparecer na tela.
+toda vez que o usuário passar o mouse por cima de
+algum quadrado troque sua cor para uma cor aleatória
+*/
+
+var nome = prompt("Qual seu nome ? ");
+var dialogo = confirm("Clique no Button para ver a magica acontecer " + nome);
+
+var btnElement = document.getElementById('new');
+var squaresElement = document.getElementById('squares');
+
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+
+    btnElement.onclick = function () {
+      var square = document.createElement('div');
+
+      square.style.width = '100px';
+      square.style.height = '100px';
+      square.style.backgroundColor = '#F00';
+
+      square.onmouseover = function () {
+        square.style.backgroundColor = getRandomColor();
+      }
+
+      squaresElement.appendChild(square);
+    };
+
+  </script>
+</body>
+
+</html>
+

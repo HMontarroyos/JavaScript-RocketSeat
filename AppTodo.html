@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AppTodo</title>
+</head>
+
+<body>
+<input type="text" name="nome" placeholder="Digite sua Tarefa">
+<button>Adicionar Tarefas </button>
+<ul></ul>
+
+<script>
+
+    //Gravando Dados no localStorage do Console 
+
+var listElement = document.querySelector('ul');
+var inputElement = document.querySelector('input');
+var botao = document.querySelector("button");
+
+var tarefas = JSON.parse (localStorage.getItem('lista')) || [];
+
+function renderizarTodos(){
+    listElement.innerHTML = '';
+
+    for(tarefa of tarefas){
+        var list = document.createElement('li');
+        var todoTexto = document.createTextNode(tarefa);
+
+        var linkElemento = document.createElement('a');
+        linkElemento.setAttribute('href', '#');
+
+        var pos = tarefas.indexOf(tarefa);
+        linkElemento.setAttribute('onclick', 'deleteTodo('+pos+')');
+
+        var linkText = document.createTextNode('Excluir');
+        
+        linkElemento.appendChild(linkText);
+        list.appendChild(todoTexto);
+        list.appendChild(linkElemento);
+        listElement.appendChild(list);
+    }
+}
+
+renderizarTodos();
+
+function addTodo(){
+    var todoTexto = inputElement.value;
+    tarefas.push(todoTexto);
+    inputElement.value = '';
+    renderizarTodos();
+    SalvarDados();
+
+}
+
+botao.onclick = addTodo;
+
+function deleteTodo(pos){
+    tarefas.splice(pos, 1);
+    renderizarTodos();
+    SalvarDados();
+}
+
+        
+function SalvarDados(){
+    localStorage.setItem('lista', JSON.stringify(tarefas));
+
+}
+
+</script>
+</body>
+
+</html>
+

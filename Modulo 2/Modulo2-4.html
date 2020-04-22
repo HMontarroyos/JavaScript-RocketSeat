@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Exercício 04</title>
+</head>
+
+<body>
+<input type="text" name="nome">
+<button>adicionar</button>
+<ul></ul>
+
+  <script>
+      /*
+A partir do seguinte vetor:
+var nomes = ["Diego", "Gabriel", "Lucas"];
+Preencha uma lista (<ul>) no HTML com os itens da seguinte forma:
+● Diego
+● Gabriel
+● Lucas
+
+adicione um input em tela e um botão como a seguir:
+Ao clicar no botão, a função adicionar() deve ser disparada adicionando um novo item a lista de
+nomes baseado no nome preenchido no input e renderizando o novo item em tela juntos aos
+demais itens anteriores. Além disso, o conteúdo do input deve ser apagado após o clique
+
+
+*/
+
+var nomes = ['Diego', 'Gabriel', 'Lucas'];
+var listElement = document.querySelector('ul');
+var inputElement = document.querySelector('input');
+var botao = document.querySelector("button");
+
+function addItem(text) {
+  var liElement = document.createElement('li');
+  var textElement = document.createTextNode(text);
+
+  liElement.appendChild(textElement);
+  listElement.appendChild(liElement);
+}
+
+function adicionar() {
+    
+addItem(inputElement.value);
+  inputElement.value = "";
+}
+
+for (nome of nomes) {
+        addItem(nome);
+}
+
+botao.onclick = function(){
+adicionar(); 
+}
+
+</script>
+</body>
+
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bilioteca Axios - Promisses</title>
+</head>
+
+<body>
+
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+//Biblioteca Axios substitiui toda aquele codigo de XMLrequisição
+//ficando mais facil declarar promisses 
+axios.get('https://api.github.com/users/HMontarroyos')
+.then(function(response){
+    //console.log(response);
+    console.log(response.data.login);
+    //Retorna apenas o login 
+})
+.catch(function(error){
+    console.warn(error);
+});
+
+
+</script>
+</body>
+
+</html>
+
+
+
